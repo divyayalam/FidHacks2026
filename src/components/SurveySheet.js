@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Modal, View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { Modal, View, Text, TouchableOpacity, StyleSheet, ScrollView } from 'react-native';
 import { colors, spacing } from '../theme';
+import CardWallet from './CardWallet';
 
 const CATEGORIES = [
   { key: 'Food', label: '🍽 Food' },
@@ -26,7 +27,7 @@ function recommendCard(category, detail) {
   };
 }
 
-export default function SurveySheet({ visible, onClose }) {
+export default function SurveySheet({ visible, onClose, mode = 'quick', cards = [] }) {
   const [step, setStep] = useState(1);
   const [category, setCategory] = useState(null);
   const [detail, setDetail] = useState(null);
@@ -59,6 +60,14 @@ export default function SurveySheet({ visible, onClose }) {
       <View style={styles.overlay}>
         <View style={styles.sheet}>
           <View style={styles.handle} />
+
+          <ScrollView showsVerticalScrollIndicator={false}>
+            {mode === 'wallet' && (
+              <>
+                <Text style={styles.eyebrow}>Your cards</Text>
+                <CardWallet cards={cards} />
+              </>
+            )}
 
           {step === 1 && (
             <>
@@ -120,6 +129,7 @@ export default function SurveySheet({ visible, onClose }) {
               </View>
             </>
           )}
+          </ScrollView>
         </View>
       </View>
     </Modal>
@@ -138,6 +148,7 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 26,
     padding: spacing.lg,
     paddingBottom: 34,
+    maxHeight: '86%',
   },
   handle: {
     width: 36,
