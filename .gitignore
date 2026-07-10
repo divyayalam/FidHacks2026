@@ -145,11 +145,7 @@ vite.config.ts.timestamp-*
 
 appmap.log
 
-<<<<<<< HEAD
 .expo/
-
-=======
 .env
 .env.local
 .env.*.local
->>>>>>> ade0585d350b25ff7689a6244214cf5d47eed588
