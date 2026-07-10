@@ -13,6 +13,9 @@
     },
     "android": {
       "package": "com.wallit.app"
-    }
+    },
+    "plugins": [
+      "expo-secure-store"
+    ]
   }
 }
