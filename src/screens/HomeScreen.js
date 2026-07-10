@@ -2,8 +2,8 @@ import React, { useState, useRef } from 'react';
 import { View, Text, ScrollView, TouchableOpacity, StyleSheet, SafeAreaView } from 'react-native';
 import { colors, spacing } from '../theme';
 import SurveySheet from '../components/SurveySheet';
-import CardWallet from '../components/CardWallet';
-import { CARDS } from '..//components/CardData'; 
+import { CARDS } from '../components/CardData';
+
 
 const CATEGORIES = [
   { key: 'Food', amount: 564, color: colors.brand },
@@ -15,7 +15,7 @@ const CATEGORIES = [
 const ACTIVITY = [
   { name: 'Blue Bottle Coffee', sub: 'Used Capital One Venture · Dining', amount: '-$6.25' },
   { name: 'Netflix', sub: 'Used Chase Sapphire · Subscriptions', amount: '-$15.49' },
-  { name: 'Target', sub: 'Used Discover it · Shopping', amount: '-$42.10' },
+  { name: 'Target', sub: 'Usehd Discover it · Shopping', amount: '-$42.10' },
 ];
 
 const DOUBLE_TAP_DELAY = 280; // ms
@@ -91,12 +91,14 @@ export default function HomeScreen() {
             <Text style={styles.goalCaption}>On track — utilization down 8% this month</Text>
           </View>
 
-          <Text style={styles.sectionTitle}>YOUR CARDS</Text>
-          <CardWallet cards={CARDS} />
-
-          <View style={styles.quickActions}>
+          <View style={styles.investCard}>
+            <Text style={styles.sectionTitle}>INVESTMENT FOCUS</Text>
+            <Text style={styles.investTitle}>Grow your Roth IRA with every month</Text>
+            <Text style={styles.investBody}>
+              Redirect a bit of your spending into long-term investing and keep your future on track.
+            </Text>
             <TouchableOpacity style={styles.btnOutline} onPress={openCheckCard}>
-              <Text style={styles.btnOutlineText}>Check best card</Text>
+              <Text style={styles.btnOutlineText}>Open investment view</Text>
             </TouchableOpacity>
           </View>
 
@@ -170,6 +172,16 @@ const styles = StyleSheet.create({
   legendAmount: { fontSize: 12, color: colors.roseDeep },
 
   goalCard: { backgroundColor: colors.brand, borderRadius: 20, padding: 18, marginTop: 18 },
+  investCard: {
+    backgroundColor: colors.card,
+    borderWidth: 1,
+    borderColor: colors.line,
+    borderRadius: 20,
+    padding: 18,
+    marginTop: 18,
+  },
+  investTitle: { fontSize: 17, fontWeight: '700', color: colors.ink, marginTop: 4 },
+  investBody: { fontSize: 12.5, color: colors.inkSoft, lineHeight: 19, marginTop: 8, marginBottom: 14 },
   goalLabel: { fontSize: 11, color: '#CFE3D6', fontWeight: '700', letterSpacing: 1 },
   goalRow: { flexDirection: 'row', alignItems: 'baseline', marginTop: 4 },
   goalScore: { fontSize: 22, fontWeight: '700', color: '#fff' },

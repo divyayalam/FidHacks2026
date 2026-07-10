@@ -1,4 +1,6 @@
+import 'react-native-gesture-handler';
 import React, { useState } from 'react';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { StatusBar } from 'expo-status-bar';
 import { NavigationContainer } from '@react-navigation/native';
 import RootNavigator from './src/navigation/RootNavigator';
@@ -9,17 +11,19 @@ export default function App() {
 
   if (showIntro) {
     return (
-      <>
+      <GestureHandlerRootView style={{ flex: 1 }}>
         <IntroScreen onFinish={() => setShowIntro(false)} />
         <StatusBar style="dark" />
-      </>
+      </GestureHandlerRootView>
     );
   }
 
   return (
-    <NavigationContainer>
-      <RootNavigator />
-      <StatusBar style="dark" />
-    </NavigationContainer>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <NavigationContainer>
+        <RootNavigator />
+        <StatusBar style="dark" />
+      </NavigationContainer>
+    </GestureHandlerRootView>
   );
 }

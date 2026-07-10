@@ -69,27 +69,8 @@ export default function IntroScreen({ onFinish }) {
           useNativeDriver: true,
         }),
       ]),
-      // 2. Flash catches right as it lands — quick in, quick out
-      Animated.sequence([
-        Animated.timing(flashOpacity, {
-          toValue: 0.5,
-          duration: 90,
-          useNativeDriver: true,
-        }),
-        Animated.timing(flashOpacity, {
-          toValue: 0,
-          duration: 220,
-          easing: Easing.out(Easing.quad),
-          useNativeDriver: true,
-        }),
-      ]),
-      // 3. Underline draws itself
-      Animated.timing(underlineWidth, {
-        toValue: 64,
-        duration: 380,
-        easing: Easing.out(Easing.cubic),
-        useNativeDriver: false, // width can't use native driver
-      }),
+      
+      
       // 4. Hold for a beat
       Animated.delay(650),
       // 5. Fade whole screen out
@@ -138,7 +119,7 @@ export default function IntroScreen({ onFinish }) {
             alignItems: 'center',
           }}
         >
-          <Text style={styles.wordmark}>SHE</Text>
+          <Text style={styles.wordmark}>HER</Text>
           <Animated.View style={[styles.underline, { width: underlineWidth }]} />
         </Animated.View>
 
